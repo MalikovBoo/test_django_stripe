@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="column is-three-fifths">
+    {% for item in items %}
+    <div class="block ">
+        <div class="card">
+            <div class="card-content ">
+                <div class="columns">
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-5">
+                                    Item: {{ item.name }}
+                                </p>
+                                <p class="title is-6">
+                                    Description: {{ item.description }}
+                                </p>
+                                <p class="title is-6">
+                                    Price: {{ item.price }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="block">
+                            <a href="{% url 'item_page' item.id %}">
+                                <button class="button is-info ">
+                                    Open
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="block">
+        <a href="{% url 'order_list' %}">
+            <button class="button is-info ">
+                Go to order
+            </button>
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

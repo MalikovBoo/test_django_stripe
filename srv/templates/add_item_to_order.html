@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column is-three-fifths">
+    <div class="box">
+        <div class="block">
+            <p class="title is-6">
+                Add {{ item.name }} to order
+            </p>
+            <p class="title is-6">
+                For ${{ item.price }} per item
+            </p>
+        </div>
+        <div class="block ">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="button is-info is-fullwidth is-normal mt-5" type="submit">
+                    Add item
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="column is-one-third">
+    <div class="box">
+        <div class="block">
+            <a href="{% url 'item_list' %}">
+                <button class="button is-info is-fullwidth">
+                    Item list
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

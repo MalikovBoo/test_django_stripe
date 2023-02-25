@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="column is-three-fifths">
+    <div class="block">
+        <div class="card">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-5">
+                                    Item: {{ item.name }}
+                                </p>
+                                <p class="title is-6">
+                                    Description: {{ item.description }}
+                                </p>
+                                <p class="title is-6">
+                                    Price: {{ item.price }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="block">
+                            <button class="button is-info" id="checkout-button" data_item_id="{{ item.id }}">
+                                Buy
+                            </button>
+                            <a href="{% url 'add_item_to_order' item.id %}">
+                                <button class="button is-info ">
+                                    Add to order
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="column is-one-third">
+    <div class="box">
+        <div class="block">
+            <a href="{% url 'item_list' %}">
+                <button class="button is-info is-fullwidth">
+                    Item list
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('{{ public_key }}');
+
+    document.getElementById('checkout-button').addEventListener
+    (
+    'click', function()
+    {
+    var item_id = document.getElementById('checkout-button').getAttribute('data_item_id');
+
+    fetch('/buy/' + item_id, {method: 'GET'})
+        .then(
+            function(response)
+            {
+                return response.json();
+            }
+        )
+        .then(
+            function(data)
+            {
+                // Redirect the user to the Stripe Checkout page
+                return stripe.redirectToCheckout({ sessionId: data.session_id});
+            }
+        )
+    }
+    );
+</script>
+
+{% endblock content %}

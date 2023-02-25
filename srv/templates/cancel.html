@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="column ">
+    <div class="block ">
+        <div class="card">
+            <div class="card-content ">
+                <div class="columns">
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-content">
+                                <h1 class="title is-1">Sorry, something go wrong</h1>
+                                <p class="title is-6">
+                                    If you have any questions, please email
+                                    <a href="mailto:orders@example.com">orders@example.com</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="column is-one-third">
+    <div class="box">
+        <div class="block">
+            <a href="{% url 'item_list' %}">
+                <button class="button is-info is-fullwidth">
+                    Item list
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
