@@ -60,7 +60,7 @@ ROOT_URLCONF = 'payments.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
+        'DIRS': ['/home/malikov123/malikov123.pythonanywhere.com/srv/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
