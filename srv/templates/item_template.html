@@ -59,7 +59,6 @@
     'click', function()
     {
     var item_id = document.getElementById('checkout-button').getAttribute('data_item_id');
-    alert(item_id);
     fetch('/buy/' + item_id, {method: 'GET'})
         .then(
             function(response)
@@ -71,7 +70,6 @@
             function(data)
             {
                 // Redirect the user to the Stripe Checkout page
-                alert(data.session_id);
                 return stripe.redirectToCheckout({ sessionId: data.session_id});
             }
         )

@@ -60,7 +60,7 @@ ROOT_URLCONF = 'payments.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/malikov123/malikov123.pythonanywhere.com/srv/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,4 +129,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51MeafWH9EzMzOhubYZms3bo6Vr0WmEGwmViJNHxlvkvYanvbNQ3ajUS6Op3dEFmPS5jV5su35rBSTkmfJNcGqvgr00XeK4NBWm'
-STRIPE_SECRET_KEY = 'sk_test_51MeafWH9EzMzOhubkT9H8tJWAisMrYxReklK0tLvhIsWzKo3R9TxaH9w1MJUkXjl0FQ5zDyvX7XMdDO7A9dr7kUS0023iUzqHS'
+STRIPE_SECRET_KEY = os.environ.get('SECRET_KEY')
