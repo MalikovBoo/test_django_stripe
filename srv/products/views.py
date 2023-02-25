@@ -7,7 +7,7 @@ import stripe
 from urllib.parse import unquote
 import json
 
-# stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_key = settings.STRIPE_SECRET_KEY
 public_key = settings.STRIPE_PUBLISHABLE_KEY
 
 
@@ -25,8 +25,6 @@ def item_page(request, pk):
 
 
 def buy(request, pk):
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-
     item = Item.objects.get(pk=pk)
     session = stripe.checkout.Session.create(
         line_items=[{
@@ -82,7 +80,6 @@ def order_list(request):
 
 
 def buy_order(request):
-    stripe.api_key = settings.STRIPE_SECRET_KEY
     order = Order.objects.get(customer=request.user)
     encoded_data = request.GET.get('data')
     if encoded_data:
