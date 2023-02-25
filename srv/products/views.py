@@ -13,7 +13,7 @@ public_key = settings.STRIPE_PUBLISHABLE_KEY
 
 def item_list(request):
     items = [item for item in Item.objects.all()]
-    return render(request, './templates/items_list.html', {'items': items})
+    return render(request, 'items_list.html', {'items': items})
 
 
 def item_page(request, pk):
